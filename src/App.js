@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+// import './index.css';
+import { useState } from 'react';
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
+import VideoDataContext from './contexts/VideoDataContext';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
+  const [videoData, setVideoData] = useState(null);
+
+  const handleVideoData = (data) => {
+    setVideoData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <Routes>
+        {/* <Route path="/:id" element={<DetailPage />} />
+        <Route path="/" element={<HomePage handleVideoData={handleVideoData} />} /> */}
 
+        <Route path="/" element={<HomePage />} />
+        <Route path="/video/:id" element={<DetailPage />} />
+        <Route path="*" element={<div>NO MATCH</div>} />
+      </Routes>
+    </>
+  );
+};
 export default App;
