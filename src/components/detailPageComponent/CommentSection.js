@@ -22,7 +22,7 @@ const CommentSection = ({ id }) => {
             setComments(data);
             console.log(comments);
         }
-    }, [data]);
+    }, [data, comments]);
 
     const handleChange = (event) => {
         const { name, value } = event.target;

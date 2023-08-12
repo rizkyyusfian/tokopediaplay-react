@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
 import '../styles/loginpage.css';
 import useAuth from '../hooks/useAuth';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const { login, user, error } = useAuth();

@@ -1,11 +1,9 @@
 import { Layout, Menu, Avatar } from 'antd';
 import { HomeOutlined, LoginOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
 
 const { Header } = Layout;
 const HeaderComponent = () => {
-    const { logout } = useAuth();
     return (
         <Header
             style={{
