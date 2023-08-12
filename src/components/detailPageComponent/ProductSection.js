@@ -1,5 +1,5 @@
 import { Layout, theme, Space, Typography, Card } from 'antd';
-import { SelectOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import useApiRequest from '../../hooks/useApiRequest';
 import moneyFormat from '../../utils/MoneyFormatUtil';
 const { Sider, Content } = Layout;
@@ -10,7 +10,7 @@ const ProductSection = ({ id }) => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const { data, error, loading } = useApiRequest(`http://localhost:8000/product/${id}`);
+    const { data} = useApiRequest(`http://localhost:8000/product/${id}`);
 
     return (
         <Sider
@@ -34,7 +34,7 @@ const ProductSection = ({ id }) => {
                                 style={{ width: '260px' }}
                                 cover={<img alt={product.name} src={product.imageLink} />}
                                 actions={[
-                                    <a href={product.link} key={product.link} target="_blank" style={{ color: 'black', fontSize: '16px' }}>
+                                    <a href={product.link} key={product.link} target="_blank" rel='noreferrer' style={{ color: 'black', fontSize: '16px' }}>
                                         <ShoppingCartOutlined /> Buy!
                                     </a>,
                                 ]}

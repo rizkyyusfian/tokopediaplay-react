@@ -3,14 +3,12 @@ import HeaderComponent from '../components/layout/HeaderComponent';
 import CommentSection from '../components/detailPageComponent/CommentSection';
 import ProductSection from '../components/detailPageComponent/ProductSection';
 import { Layout } from 'antd';
-import { useEffect, useState, useContext } from 'react';
-import VideoDataContext from '../contexts/VideoDataContext';
 import { useLocation } from 'react-router-dom';
 const { Content } = Layout;
 
 function DetailPage() {
     const location = useLocation();
-    const {id, title, image, link} = location.state;
+    const {id, title, link} = location.state;
     const videoId = link.substring(link.lastIndexOf('/') + 1)
 
     return (
