@@ -1,4 +1,4 @@
-import { Layout, Row, Col } from 'antd';
+import { Layout } from 'antd';
 import HeaderComponent from '../components/layout/HeaderComponent';
 import FooterComponent from '../components/layout/FooterComponent';
 import VideoCard from '../components/homePageComponent/VideoCard';
@@ -6,7 +6,7 @@ import useApiRequest from '../hooks/useApiRequest';
 const { Content } = Layout;
 
 function HomePage() {
-    const { data, error, loading } = useApiRequest('http://localhost:8000/');
+    const { data } = useApiRequest('http://localhost:8000/');
 
     return (
         <Layout>
@@ -15,7 +15,6 @@ function HomePage() {
                 padding: 24,
                 minHeight: 380,
                 background: '#28282F',
-                //height: '900px', // this is for testing purpose
             }}>
                 <div style={{
                     display: 'flex',

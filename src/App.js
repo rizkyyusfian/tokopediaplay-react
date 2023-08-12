@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
-import VideoDataContext from './contexts/VideoDataContext';
+import NonExistPage from './pages/NonExistPage';
+import LoginPage from './pages/LoginPage';
 import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
 
         <Route path="/" element={<HomePage />} />
         <Route path="/video/:id" element={<DetailPage />} />
-        <Route path="*" element={<div>NO MATCH</div>} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NonExistPage/>} />
       </Routes>
     </>
   );
