@@ -32,7 +32,7 @@ const LoginPage = () => {
                 onFinish={onFinish}
             >
                 <h1 className="login-title">Login</h1>
-                {error && <p className="error-message">{error}</p>}
+                {error && <p className="error-message">*{error}</p>}
                 <Form.Item
                     name="email"
                     rules={[
@@ -42,7 +42,7 @@ const LoginPage = () => {
                         },
                     ]}
                 >
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="email" />
+                    <Input prefix={<UserOutlined />} placeholder="email" />
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -54,15 +54,15 @@ const LoginPage = () => {
                     ]}
                 >
                     <Input
-                        prefix={<LockOutlined className="site-form-item-icon" />}
+                        prefix={<LockOutlined />}
                         type="password"
                         placeholder="Password"
                     />
                 </Form.Item>
                 <Form.Item>
                     <Space size='small'>
-                        <Button type="primary" htmlType="submit" className="login-form-button">Log in</Button>
-                        <span> Or <a href="/register">register now!</a></span>
+                        <Button type="primary" htmlType="submit">Log in</Button>
+                        {/* <span> Or <a href="/register">register now!</a></span> */}
                     </Space>
                 </Form.Item>
             </Form>

@@ -3,17 +3,26 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #28282E;
 }
 
 .login-form {
     width: 300px;
     padding: 24px;
-    background: #f7f7f7;
+    background: #001628;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
+    color: #fff;
 }
 
 .login-title {
     text-align: center;
     margin-bottom: 24px;
+}
+
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: bold;
 }

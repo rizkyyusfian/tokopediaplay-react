@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const login = async (email, password) => {
         // You can perform API calls here to authenticate the user
@@ -35,6 +37,8 @@ const useAuth = () => {
     const logout = () => {
         setUser(null);
         sessionStorage.removeItem('user');
+        navigate('/');
+
     };
 
     return { user, error, login, logout };
