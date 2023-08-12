@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Layout, theme, Input, Button, Space, Typography, Card, Alert } from 'antd';
 import useApiRequest from '../../hooks/useApiRequest';
+import CommentDateFormatUtil from '../../utils/CommentDateFormatUtil';
 const { Sider, Content } = Layout;
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -8,16 +9,18 @@ const { Title } = Typography;
 const CommentSection = ({ id }) => {
     const { token: { colorBgContainer } } = theme.useToken();
     const { data, refetch } = useApiRequest(`http://localhost:8000/comment/${id}`);
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState(null);
     const [response, setResponse] = useState(null);
     const [form, setForm] = useState({
         userName: '',
         comment: ''
     });
+    console.log(data);
 
     useEffect(() => {
         if (data) {
             setComments(data);
+            console.log(comments);
         }
     }, [data]);
 
@@ -117,14 +120,13 @@ const CommentSection = ({ id }) => {
 
             <Content style={{ margin: '20px 20px 0px 20px', display: 'flex', justifyContent: 'center' }}>
                 <Space direction="vertical" size={20}>
-                    {comments && comments.map((item) => (
-                        item.commentList.map((comment) => (
-                            <Card size="small" style={{ width: 260 }}>
-                                <span style={{ fontWeight: 'bold', wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.userName}</span>
-                                <hr />
-                                <span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.comment}</span>
-                            </Card>
-                        ))
+                    {comments && comments.commentList.map((comment) => (
+                        <Card size="small" style={{ width: 260 }}>
+                            <span style={{ fontWeight: 'bold', wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.userName}</span>
+                            <span style={{ float: 'right', fontSize: '10px' }}>{CommentDateFormatUtil(comment.createdAt)}</span>
+                            <hr />
+                            <span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.comment}</span>
+                        </Card>
                     ))}
                 </Space>
             </Content>
