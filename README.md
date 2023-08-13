@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Tokopedia Play React Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Tokopedia Play clone built using ReactJS and the Ant Design UI component library and deployed on Netlify. This app is made as a final term assignment for GIGIH 3.0 FUllstack Track. The application allows users to watch videos, view video details, comment on videos, and more. This app is connected to this [Tokopedia Play backend API server](https://github.com/rizkyyusfian/tokopediaplay/tree/master).
 
-## Available Scripts
+## Features Implemented
 
-In the project directory, you can run:
+- **Home Page:** Displays a list of videos with thumbnails fetched from the backend API Server.
+- **Video Detail Page:** Displays detailed information about a selected video.
+- **Login Page:** Users can log in using the provided credentials.
+- **Commenting System:** Users can submit comments using input name and comment. additionally, when the user logged in, the input name automatically uses the user credential.
+- **BONUS FEATURE**:
+  - **Search Video:** Allows users to search for videos using keywords on the home page.
+  - **User Profile:** Displays user profile photo and name in the top right corner.
 
-### `npm start`
+## Components and Libraries Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ReactJS: A JavaScript library for building user interfaces.
+- Ant Design: A popular UI library for React applications.
+- React Router: Used for handling routing within the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployment
 
-### `npm test`
+The application is deployed on **Netlify** using [deploy-netlify branch](https://github.com/rizkyyusfian/tokopediaplay-react/tree/deploy-netlify). You can access the deployed app using the following link: [App Link](https://tokopediaplay-react.netlify.app/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/47c648e9-ede3-4ac8-a2a0-6a3cd9e35f18/deploy-status)](https://app.netlify.com/sites/tokopediaplay-react/deploys)
 
-### `npm run build`
+## How to Run Locally
+To run the Tokopedia Play React Clone locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the project. Make sure that you clone the **master** branch
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+  git clone https://github.com/rizkyyusfian/tokopediaplay-react.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Go to the project directory
 
-### `npm run eject`
+```
+  cd tokopediaplay-react
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+  npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+  npm start
+```
 
-## Learn More
+The app can be accessed at `http://localhost:3000`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Additional Notes
+**List of user accounts used for login:**
+```
+email: windah@gmail.com
+password: windah123
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+email: lisa@gmail.com
+password: lisa123
+```
 
-### Code Splitting
+```
+email: sammy@gmail.com
+password: sammy123
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the [MIT License](LICENSE).
