@@ -43,7 +43,7 @@ const HeaderComponent = () => {
                             }
                         ]}
                     />
-                    <Avatar size="large" src={<img src="http://localhost:8000/public/images/profilepicture/foto1.jpeg" alt="avatar" />} />
+                    <Avatar size="large" src={<img src={JSON.parse(sessionStorage.getItem('user')).profilePicture} alt="avatar" />} />
                 </>
             }
         </Header>
