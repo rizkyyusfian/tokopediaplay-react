@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Layout, theme, Input, Button, Space, Typography, Card, Alert } from 'antd';
+import { Layout, theme, Space, Typography, Card, Alert, Button, Form, Input } from 'antd';
 import useApiRequest from '../../hooks/useApiRequest';
 import CommentDateFormatUtil from '../../utils/CommentDateFormatUtil';
+import '../../styles/components/detailPageComponent/commentsection.css';
 const { Sider, Content } = Layout;
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -18,6 +19,12 @@ const CommentSection = ({ id }) => {
     console.log(data);
 
     useEffect(() => {
+        if (sessionStorage.getItem('user')) {
+            setForm({
+                userName: JSON.parse(sessionStorage.getItem('user')).userName,
+                comment: ''
+            })
+        }
         if (data) {
             setComments(data);
             console.log(comments);
@@ -58,8 +65,7 @@ const CommentSection = ({ id }) => {
         }
     };
 
-    const handleForm = (event) => {
-        event.preventDefault();
+    const handleForm = () => {
         console.log(form);
         handleNewCommentSubmit(form);
         handleClearForm();
@@ -85,20 +91,13 @@ const CommentSection = ({ id }) => {
 
 
     return (
-        <Sider
-            width={320}
-            style={{
-                background: { colorBgContainer },
-                overflowX: 'hidden',
-                overflowY: 'auto',
-            }}
-        >
-            <Content style={{ margin: '0px 20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <Sider className='sider' width={320} style={{ background: { colorBgContainer } }}>
+            <Content className='comment-content-title'>
                 <Title level={3} style={{ color: 'white' }}>COMMENT</Title>
-                <hr style={{ width: '100%', color: 'white' }} />
+                <hr style={{ width: '100%' }} />
             </Content>
 
-            <Content style={{ margin: '0px 20px' }}>
+            <Content className='comment-content-form'>
                 {response && (
                     <Alert
                         message="Success"
@@ -108,24 +107,55 @@ const CommentSection = ({ id }) => {
                         style={{ marginBottom: '10px' }}
                     />
                 )}
-                <form style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end' }} onSubmit={handleForm}>
-                    <Input id='userName' name="userName" placeholder="Input your name" value={form.userName} onChange={handleChange} allowClear style={{ marginBottom: '10px' }} />
-                    <TextArea id='comment' name="comment" placeholder="Share your comment" value={form.comment} onChange={handleChange} allowClear autoSize={{ minRows: 2, }} />
-                    <Space style={{ marginTop: '10px' }} size='small'>
-                        {form && form.userName && form.comment && <Button ghost onClick={handleClearForm}>Clear</Button>}
-                        {(form && form.userName && form.comment) ? <Button type="primary" htmlType="submit">Submit</Button> : <Button type="primary" htmlType="submit" disabled style={{ color: 'white' }}>Submit</Button>}
-                    </Space>
-                </form>
+                <Form className='comment-content-form-form' onFinish={handleForm}>
+                    <Form.Item
+                        name="userName"
+                        initialValue={JSON.parse(sessionStorage.getItem('user'))?.userName || ''}
+                        defaultValue={form.userName}
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                        style={{ width: '100%' }}
+                    >
+                        {!sessionStorage.getItem('user') ?
+                            <Input name='userName' placeholder='Username' defaultValue={form.userName} onChange={handleChange} />
+                            :
+                            <Input name='userName' placeholder='Username' defaultValue={form.userName} onChange={handleChange} />
+                        }
+                    </Form.Item>
+
+                    <Form.Item
+                        name="comment"
+                        initialValue={form.comment}
+                        defaultValue={form.comment}
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your comment!',
+                            },
+                        ]}
+                        style={{ width: '100%' }}
+                    >
+                        <TextArea name='comment' placeholder="Share your comment" allowClear autoSize={{ minRows: 2, }} defaultValue={form.comment} onChange={handleChange} />
+                    </Form.Item>
+
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">Submit</Button>
+                    </Form.Item>
+                </Form>
             </Content>
 
-            <Content style={{ margin: '20px 20px 0px 20px', display: 'flex', justifyContent: 'center' }}>
+            <Content className='comment-content-display'>
                 <Space direction="vertical" size={20}>
                     {comments && comments.commentList.map((comment) => (
                         <Card size="small" style={{ width: 260 }}>
-                            <span style={{ fontWeight: 'bold', wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.userName}</span>
-                            <span style={{ float: 'right', fontSize: '10px' }}>{CommentDateFormatUtil(comment.createdAt)}</span>
+                            <span className='comment-content-display-card-name'>{comment.userName}</span>
+                            <span className='comment-content-display-card-date'>{CommentDateFormatUtil(comment.createdAt)}</span>
                             <hr />
-                            <span style={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>{comment.comment}</span>
+                            <span className='comment-content-display-card-comment'>{comment.comment}</span>
                         </Card>
                     ))}
                 </Space>
