@@ -10,7 +10,7 @@ const useAuth = () => {
         // You can perform API calls here to authenticate the user
         // For example:
         try {
-            const response = await fetch('http://localhost:8000/login', {
+            const response = await fetch('https://tokopediaplay.up.railway.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ const ProductSection = ({ id }) => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const { data } = useApiRequest(`http://localhost:8000/product/${id}`);
+    const { data } = useApiRequest(`https://tokopediaplay.up.railway.app/product/${id}`);
 
     return (
         <Sider

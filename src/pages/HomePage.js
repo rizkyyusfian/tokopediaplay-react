@@ -9,7 +9,7 @@ import '../styles/pages/homepage.css';
 const { Content } = Layout;
 
 function HomePage() {
-    const { data } = useApiRequest('http://localhost:8000/');
+    const { data } = useApiRequest('https://tokopediaplay.up.railway.app/');
     const [searchQuery, setSearchQuery] = useState('');
     const [videos, setVideos] = useState(null);
 
@@ -19,7 +19,7 @@ function HomePage() {
 
     const handleSearchQuery = async () => {
         try {
-            const response = await fetch('http://localhost:8000/search?q=' + searchQuery);
+            const response = await fetch('https://tokopediaplay.up.railway.app/search?q=' + searchQuery);
             if (response.ok) {
                 const data = await response.json();
                 setVideos(data);

@@ -9,7 +9,7 @@ const { Title } = Typography;
 
 const CommentSection = ({ id }) => {
     const { token: { colorBgContainer } } = theme.useToken();
-    const { data, refetch } = useApiRequest(`http://localhost:8000/comment/${id}`);
+    const { data, refetch } = useApiRequest(`https://tokopediaplay.up.railway.app/comment/${id}`);
     const [comments, setComments] = useState(null);
     const [response, setResponse] = useState(null);
     const [form, setForm] = useState({
@@ -45,7 +45,7 @@ const CommentSection = ({ id }) => {
 
     const handleNewCommentSubmit = async (values) => {
         try {
-            const response = await fetch(`http://localhost:8000/comment/${id}`, {
+            const response = await fetch(`https://tokopediaplay.up.railway.app/comment/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
