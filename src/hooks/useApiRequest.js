@@ -21,7 +21,7 @@ function useApiRequest(url, options = {}) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   const refetch = () => {
     setLoading(true);
