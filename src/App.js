@@ -4,7 +4,6 @@ import NonExistPage from './pages/NonExistPage';
 import LoginPage from './pages/LoginPage';
 import { Routes, Route } from 'react-router-dom';
 import useAuth from './hooks/useAuth';
-import SearchPage from './pages/SearchPage';
 
 const App = () => {
   const { logout } = useAuth();
@@ -15,7 +14,6 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/video/:id" element={<DetailPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/search" element={<SearchPage />} />
         <Route path="/logout" element={ <CallLogout logout={logout} /> } />
         <Route path="*" element={<NonExistPage/>} />
       </Routes>

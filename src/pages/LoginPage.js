@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
-import '../styles/loginpage.css';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import '../styles/pages/loginpage.css';
 
 const LoginPage = () => {
     const { login, user, error } = useAuth();
@@ -26,13 +26,11 @@ const LoginPage = () => {
             <Form
                 name="normal_login"
                 className="login-form"
-                initialValues={{
-                    remember: true,
-                }}
+                initialValues={{ remember: true, }}
                 onFinish={onFinish}
             >
-                <h1 className="login-title">Login</h1>
-                {error && <p className="error-message">*{error}</p>}
+                <h1 className="login-title">LOG IN</h1>
+                {error && <p className="error-message"><span style={{color: 'red'}}>*</span>{error}</p>}
                 <Form.Item
                     name="email"
                     rules={[
@@ -53,16 +51,11 @@ const LoginPage = () => {
                         },
                     ]}
                 >
-                    <Input
-                        prefix={<LockOutlined />}
-                        type="password"
-                        placeholder="Password"
-                    />
+                    <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
                 </Form.Item>
                 <Form.Item>
                     <Space size='small'>
-                        <Button type="primary" htmlType="submit">Log in</Button>
-                        {/* <span> Or <a href="/register">register now!</a></span> */}
+                        <Button type="primary" htmlType="submit" ghost>Log in</Button>
                     </Space>
                 </Form.Item>
             </Form>

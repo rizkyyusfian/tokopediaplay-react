@@ -2,6 +2,7 @@ import { Layout, theme, Space, Typography, Card } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import useApiRequest from '../../hooks/useApiRequest';
 import moneyFormat from '../../utils/MoneyFormatUtil';
+import '../../styles/components/detailPageComponent/productsection.css';
 const { Sider, Content } = Layout;
 const { Title } = Typography;
 const { Meta } = Card;
@@ -10,7 +11,7 @@ const ProductSection = ({ id }) => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const { data} = useApiRequest(`http://localhost:8000/product/${id}`);
+    const { data } = useApiRequest(`http://localhost:8000/product/${id}`);
 
     return (
         <Sider
@@ -21,12 +22,12 @@ const ProductSection = ({ id }) => {
                 overflowY: 'auto',
             }}
         >
-            <Content style={{ margin: '0px 20px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Content className='sider' >
                 <Title level={3} style={{ color: 'white' }}>PRODUCT</Title>
                 <hr style={{ width: '100%', color: 'white' }} />
             </Content>
 
-            <Content style={{ marginBottom: '20px', display: "flex", justifyContent: "center", wordBreak: 'break-word', wordWrap: 'break-word' }}>
+            <Content className='comment-content-display'>
                 <Space direction="vertical" size={20}>
                     {data && data.map((item) => (
                         item.productList.map((product) => (
@@ -63,5 +64,5 @@ const DisplayName = (name) => {
         </div>
     )
 }
-        
+
 export default ProductSection;

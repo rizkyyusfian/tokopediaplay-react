@@ -1,23 +1,21 @@
 import { useState } from 'react';
 import { Card } from 'antd';
 import {Link} from 'react-router-dom';
+import '../../styles/components/homePageComponent/videocard.css'
 
 const { Meta } = Card;
 const VideoCard = ({ id, title, image, link }) => {
-    const [videoDetail, setVideoDetail] = useState({id: id, title: title, image: image, link: link});
+    const [videoDetail] = useState({id: id, title: title, image: image, link: link});
 
     return (
         <Link to={`/video/${id}`} state={videoDetail} >
             <Card
+                className='video-card'
                 hoverable={true}
                 loading={false}
-                style={{
-                    width: 340,
-                    margin: '10px',
-                }}
                 cover={<img alt={title} src={image} />}
             >
-                <Meta title={DisplayName(title)} style={{ textAlign: 'center', fontWeight: 'bold', wordWrap: 'break-word', wordBreak: 'break-word' }} />
+                <Meta title={DisplayName(title)} className='video-card-text'/>
             </Card>
         </Link>
     )
